@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Initial Stykovka Bot
+ */
+
 require 'vendor/autoload.php';
 
 use Telegram\Bot\Api;
