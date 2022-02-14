@@ -5,20 +5,38 @@
  */
 
 require 'vendor/autoload.php';
+require_once 'stykovka.php';
+
+
+// ini_set('log_errors', 'On');
+// ini_set('error_log', 'error.txt');
 
 use Telegram\Bot\Api;
 
-$telegram = new Api('5098676907:AAFpQBrAK8y3tJujjwm_VG63858-qry3Gks');
+$Token = $_GET['bot'];
+
+$telegram = new Api($Token);
+
+// $telegram->addCommand($StartCommand);
+// $update = $telegram->commandsHandler(true);
+
+$StykovkaAPI = new StykovkaAPI();
+
+$initBotOnServer = $StykovkaAPI->initStore($Token);
 
 $updates = $telegram->getWebhookUpdates();
 
 $chatID = $updates->getMessage()->getFrom()->getId();
 $firstName = $updates->getMessage()->getFrom()->getFirstName();
 $lastName = $updates->getMessage()->getFrom()->getLastName();
-
-$response = $telegram->sendMessage([
-    'chat_id' => '447774527', 
-    'text' => "Hello $firstName $lastName"
-  ]);
+$text = $updates->getMessage()->getText();
 
 
+switch($text) {
+  case "/start": {
+    $response = $telegram->sendMessage([
+      'chat_id' => $chatID, 
+      'text' => $initBotOnServer->name
+    ]);
+  }
+}
