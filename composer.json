@@ -9,9 +9,6 @@
             "Sync\\Bot\\": "src/",
             "Sync\\Bot\\Commands\\": "src/Commands/",
             "Sync\\Bot\\Scripts\\": "src/Scripts"
-        },
-        "classmap": [
-            "src/Scripts/Stykovka.php"
-        ]
+        }
     }
 }

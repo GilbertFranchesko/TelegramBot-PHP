@@ -2,6 +2,8 @@
 
 namespace Sync\Bot\Commands;
 
+use Sync\Bot\Scripts\Stykovka;
+
 use Telegram\Bot\Actions;
 use Telegram\Bot\Commands\Command;
 
@@ -23,25 +25,10 @@ class StartCommand extends Command
     public function handle($arguments)
     {
 
-       var_dump($StykovkaAPI);
+        $Stykovka = new Stykovka($_GET['bot']);
 
-
-        $initBotOnServer = initStore($Token);
-
-        $this->replyWithMessage(['text' => $initBotOnServer->name]);
-
-        // This will update the chat status to typing...
         $this->replyWithChatAction(['action' => Actions::TYPING]);
-        $commands = $this->getTelegram()->getCommands();
+        $this->replyWithMessage(['text' => "hello"]);
 
-        // Build the list
-        $response = '';
-        foreach ($commands as $name => $command) {
-            $response .= sprintf('/%s - %s' . PHP_EOL, $name, $command->getDescription());
-        }
-
-        $this->replyWithMessage(['text' => $response]);
-
-        // $this->triggerCommand('subscribe');
     }
 }
