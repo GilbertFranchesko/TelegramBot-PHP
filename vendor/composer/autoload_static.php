@@ -28,8 +28,9 @@ class ComposerStaticInit5ce898ae73a0558ca69d3499a86f5d11
         ),
         'S' => 
         array (
-            'Sync\\Scripts\\' => 13,
+            'Sync\\Bot\\Scripts\\' => 17,
             'Sync\\Bot\\Commands\\' => 18,
+            'Sync\\Bot\\' => 9,
             'Symfony\\Polyfill\\Php80\\' => 23,
             'Symfony\\Polyfill\\Php72\\' => 23,
             'Symfony\\Polyfill\\Mbstring\\' => 26,
@@ -71,13 +72,17 @@ class ComposerStaticInit5ce898ae73a0558ca69d3499a86f5d11
         array (
             0 => __DIR__ . '/..' . '/irazasyed/telegram-bot-sdk/src',
         ),
-        'Sync\\Scripts\\' => 
+        'Sync\\Bot\\Scripts\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/Scripts',
+            0 => __DIR__ . '/../..' . '/src/Scripts',
         ),
         'Sync\\Bot\\Commands\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/Commands',
+            0 => __DIR__ . '/../..' . '/src/Commands',
+        ),
+        'Sync\\Bot\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src',
         ),
         'Symfony\\Polyfill\\Php80\\' => 
         array (
@@ -631,8 +636,9 @@ class ComposerStaticInit5ce898ae73a0558ca69d3499a86f5d11
         'Symfony\\Polyfill\\Mbstring\\Mbstring' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/Mbstring.php',
         'Symfony\\Polyfill\\Php72\\Php72' => __DIR__ . '/..' . '/symfony/polyfill-php72/Php72.php',
         'Symfony\\Polyfill\\Php80\\Php80' => __DIR__ . '/..' . '/symfony/polyfill-php80/Php80.php',
-        'Sync\\Bot\\Commands\\HelpCommand' => __DIR__ . '/../..' . '/Commands/HelpCommand.php',
-        'Sync\\Bot\\Commands\\StartCommand' => __DIR__ . '/../..' . '/Commands/StartCommand.php',
+        'Sync\\Bot\\Commands\\HelpCommand' => __DIR__ . '/../..' . '/src/Commands/HelpCommand.php',
+        'Sync\\Bot\\Commands\\StartCommand' => __DIR__ . '/../..' . '/src/Commands/StartCommand.php',
+        'Sync\\Bot\\Scripts\\Stykovka' => __DIR__ . '/../..' . '/src/Scripts/Stykovka.php',
         'Telegram\\Bot\\Actions' => __DIR__ . '/..' . '/irazasyed/telegram-bot-sdk/src/Actions.php',
         'Telegram\\Bot\\Api' => __DIR__ . '/..' . '/irazasyed/telegram-bot-sdk/src/Api.php',
         'Telegram\\Bot\\Commands\\Command' => __DIR__ . '/..' . '/irazasyed/telegram-bot-sdk/src/Commands/Command.php',

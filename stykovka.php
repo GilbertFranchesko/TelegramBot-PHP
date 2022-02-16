@@ -1,6 +1,5 @@
 <?php
 
-namespace Backend\Api;
 
 class StykovkaAPI
 {
