@@ -1,6 +1,6 @@
 <?php
 
-namespace Backend\Api;
+namespace Sync\Scripts\StykovkaAPI;
 
 class StykovkaAPI
 {

@@ -28,6 +28,8 @@ class ComposerStaticInit5ce898ae73a0558ca69d3499a86f5d11
         ),
         'S' => 
         array (
+            'Sync\\Scripts\\' => 13,
+            'Sync\\Bot\\Commands\\' => 18,
             'Symfony\\Polyfill\\Php80\\' => 23,
             'Symfony\\Polyfill\\Php72\\' => 23,
             'Symfony\\Polyfill\\Mbstring\\' => 26,
@@ -56,6 +58,7 @@ class ComposerStaticInit5ce898ae73a0558ca69d3499a86f5d11
         'D' => 
         array (
             'Doctrine\\Inflector\\' => 19,
+            'Doctrine\\Common\\Inflector\\' => 26,
         ),
         'C' => 
         array (
@@ -67,6 +70,14 @@ class ComposerStaticInit5ce898ae73a0558ca69d3499a86f5d11
         'Telegram\\Bot\\' => 
         array (
             0 => __DIR__ . '/..' . '/irazasyed/telegram-bot-sdk/src',
+        ),
+        'Sync\\Scripts\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/Scripts',
+        ),
+        'Sync\\Bot\\Commands\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/Commands',
         ),
         'Symfony\\Polyfill\\Php80\\' => 
         array (
@@ -131,6 +142,10 @@ class ComposerStaticInit5ce898ae73a0558ca69d3499a86f5d11
         'Doctrine\\Inflector\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/inflector/lib/Doctrine/Inflector',
+        ),
+        'Doctrine\\Common\\Inflector\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/doctrine/inflector/lib/Doctrine/Common/Inflector',
         ),
         'Carbon\\' => 
         array (
@@ -218,6 +233,7 @@ class ComposerStaticInit5ce898ae73a0558ca69d3499a86f5d11
         'Carbon\\Translator' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Translator.php',
         'Carbon\\TranslatorStrongTypeInterface' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/TranslatorStrongTypeInterface.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'Doctrine\\Common\\Inflector\\Inflector' => __DIR__ . '/..' . '/doctrine/inflector/lib/Doctrine/Common/Inflector/Inflector.php',
         'Doctrine\\Inflector\\CachedWordInflector' => __DIR__ . '/..' . '/doctrine/inflector/lib/Doctrine/Inflector/CachedWordInflector.php',
         'Doctrine\\Inflector\\GenericLanguageInflectorFactory' => __DIR__ . '/..' . '/doctrine/inflector/lib/Doctrine/Inflector/GenericLanguageInflectorFactory.php',
         'Doctrine\\Inflector\\Inflector' => __DIR__ . '/..' . '/doctrine/inflector/lib/Doctrine/Inflector/Inflector.php',
@@ -440,8 +456,6 @@ class ComposerStaticInit5ce898ae73a0558ca69d3499a86f5d11
         'Illuminate\\Support\\Composer' => __DIR__ . '/..' . '/illuminate/support/Composer.php',
         'Illuminate\\Support\\ConfigurationUrlParser' => __DIR__ . '/..' . '/illuminate/support/ConfigurationUrlParser.php',
         'Illuminate\\Support\\DateFactory' => __DIR__ . '/..' . '/illuminate/support/DateFactory.php',
-        'Illuminate\\Support\\Enumerable' => __DIR__ . '/..' . '/illuminate/support/Enumerable.php',
-        'Illuminate\\Support\\Env' => __DIR__ . '/..' . '/illuminate/support/Env.php',
         'Illuminate\\Support\\Facades\\App' => __DIR__ . '/..' . '/illuminate/support/Facades/App.php',
         'Illuminate\\Support\\Facades\\Artisan' => __DIR__ . '/..' . '/illuminate/support/Facades/Artisan.php',
         'Illuminate\\Support\\Facades\\Auth' => __DIR__ . '/..' . '/illuminate/support/Facades/Auth.php',
@@ -459,6 +473,7 @@ class ComposerStaticInit5ce898ae73a0558ca69d3499a86f5d11
         'Illuminate\\Support\\Facades\\File' => __DIR__ . '/..' . '/illuminate/support/Facades/File.php',
         'Illuminate\\Support\\Facades\\Gate' => __DIR__ . '/..' . '/illuminate/support/Facades/Gate.php',
         'Illuminate\\Support\\Facades\\Hash' => __DIR__ . '/..' . '/illuminate/support/Facades/Hash.php',
+        'Illuminate\\Support\\Facades\\Input' => __DIR__ . '/..' . '/illuminate/support/Facades/Input.php',
         'Illuminate\\Support\\Facades\\Lang' => __DIR__ . '/..' . '/illuminate/support/Facades/Lang.php',
         'Illuminate\\Support\\Facades\\Log' => __DIR__ . '/..' . '/illuminate/support/Facades/Log.php',
         'Illuminate\\Support\\Facades\\Mail' => __DIR__ . '/..' . '/illuminate/support/Facades/Mail.php',
@@ -481,14 +496,12 @@ class ComposerStaticInit5ce898ae73a0558ca69d3499a86f5d11
         'Illuminate\\Support\\HigherOrderTapProxy' => __DIR__ . '/..' . '/illuminate/support/HigherOrderTapProxy.php',
         'Illuminate\\Support\\HtmlString' => __DIR__ . '/..' . '/illuminate/support/HtmlString.php',
         'Illuminate\\Support\\InteractsWithTime' => __DIR__ . '/..' . '/illuminate/support/InteractsWithTime.php',
-        'Illuminate\\Support\\LazyCollection' => __DIR__ . '/..' . '/illuminate/support/LazyCollection.php',
         'Illuminate\\Support\\Manager' => __DIR__ . '/..' . '/illuminate/support/Manager.php',
         'Illuminate\\Support\\MessageBag' => __DIR__ . '/..' . '/illuminate/support/MessageBag.php',
         'Illuminate\\Support\\NamespacedItemResolver' => __DIR__ . '/..' . '/illuminate/support/NamespacedItemResolver.php',
         'Illuminate\\Support\\Optional' => __DIR__ . '/..' . '/illuminate/support/Optional.php',
         'Illuminate\\Support\\Pluralizer' => __DIR__ . '/..' . '/illuminate/support/Pluralizer.php',
         'Illuminate\\Support\\ProcessUtils' => __DIR__ . '/..' . '/illuminate/support/ProcessUtils.php',
-        'Illuminate\\Support\\Reflector' => __DIR__ . '/..' . '/illuminate/support/Reflector.php',
         'Illuminate\\Support\\ServiceProvider' => __DIR__ . '/..' . '/illuminate/support/ServiceProvider.php',
         'Illuminate\\Support\\Str' => __DIR__ . '/..' . '/illuminate/support/Str.php',
         'Illuminate\\Support\\Testing\\Fakes\\BusFake' => __DIR__ . '/..' . '/illuminate/support/Testing/Fakes/BusFake.php',
@@ -498,7 +511,6 @@ class ComposerStaticInit5ce898ae73a0558ca69d3499a86f5d11
         'Illuminate\\Support\\Testing\\Fakes\\PendingMailFake' => __DIR__ . '/..' . '/illuminate/support/Testing/Fakes/PendingMailFake.php',
         'Illuminate\\Support\\Testing\\Fakes\\QueueFake' => __DIR__ . '/..' . '/illuminate/support/Testing/Fakes/QueueFake.php',
         'Illuminate\\Support\\Traits\\CapsuleManagerTrait' => __DIR__ . '/..' . '/illuminate/support/Traits/CapsuleManagerTrait.php',
-        'Illuminate\\Support\\Traits\\EnumeratesValues' => __DIR__ . '/..' . '/illuminate/support/Traits/EnumeratesValues.php',
         'Illuminate\\Support\\Traits\\ForwardsCalls' => __DIR__ . '/..' . '/illuminate/support/Traits/ForwardsCalls.php',
         'Illuminate\\Support\\Traits\\Localizable' => __DIR__ . '/..' . '/illuminate/support/Traits/Localizable.php',
         'Illuminate\\Support\\Traits\\Macroable' => __DIR__ . '/..' . '/illuminate/support/Traits/Macroable.php',
@@ -619,6 +631,8 @@ class ComposerStaticInit5ce898ae73a0558ca69d3499a86f5d11
         'Symfony\\Polyfill\\Mbstring\\Mbstring' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/Mbstring.php',
         'Symfony\\Polyfill\\Php72\\Php72' => __DIR__ . '/..' . '/symfony/polyfill-php72/Php72.php',
         'Symfony\\Polyfill\\Php80\\Php80' => __DIR__ . '/..' . '/symfony/polyfill-php80/Php80.php',
+        'Sync\\Bot\\Commands\\HelpCommand' => __DIR__ . '/../..' . '/Commands/HelpCommand.php',
+        'Sync\\Bot\\Commands\\StartCommand' => __DIR__ . '/../..' . '/Commands/StartCommand.php',
         'Telegram\\Bot\\Actions' => __DIR__ . '/..' . '/irazasyed/telegram-bot-sdk/src/Actions.php',
         'Telegram\\Bot\\Api' => __DIR__ . '/..' . '/irazasyed/telegram-bot-sdk/src/Api.php',
         'Telegram\\Bot\\Commands\\Command' => __DIR__ . '/..' . '/irazasyed/telegram-bot-sdk/src/Commands/Command.php',

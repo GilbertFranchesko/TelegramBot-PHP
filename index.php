@@ -5,8 +5,10 @@
  */
 
 require 'vendor/autoload.php';
-require_once 'stykovka.php';
+// require_once 'stykovka.php';
 
+
+ini_set('display_errors', 1);
 
 // ini_set('log_errors', 'On');
 // ini_set('error_log', 'error.txt');
@@ -17,10 +19,16 @@ $Token = $_GET['bot'];
 
 $telegram = new Api($Token);
 
-// $telegram->addCommand($StartCommand);
-// $update = $telegram->commandsHandler(true);
 
-$StykovkaAPI = new StykovkaAPI();
+$telegram->addCommand([Sync\Bot\Commands\StartCommand::class
+                      Sync\Bot\Commands\HelpCommand::class
+]);
+$commandsHandler = $telegram->commandsHandler(true);
+
+// $telegram->addCommand($StartCommand);
+
+$StykovkaAPI = new Sync\Scripts\Stykovka\StykovkaAPI();
+
 
 $initBotOnServer = $StykovkaAPI->initStore($Token);
 
@@ -30,13 +38,3 @@ $chatID = $updates->getMessage()->getFrom()->getId();
 $firstName = $updates->getMessage()->getFrom()->getFirstName();
 $lastName = $updates->getMessage()->getFrom()->getLastName();
 $text = $updates->getMessage()->getText();
-
-
-switch($text) {
-  case "/start": {
-    $response = $telegram->sendMessage([
-      'chat_id' => $chatID, 
-      'text' => $initBotOnServer->name
-    ]);
-  }
-}

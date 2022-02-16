@@ -1,18 +1,11 @@
 <?php
 
-require_once "StartCommand.php";
+namespace Check;
 
 class RouterCommand
 {
     public function run($messageText)
     {
-        switch($messageText)
-        {
-            case "/start":
-                {
-                    StartCommand::run();
-                    break;
-                }
-        }
+        echo "Hello World!";
     }
 }
