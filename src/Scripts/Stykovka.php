@@ -41,12 +41,13 @@ class Stykovka
         ); 
         $requestCheckAdminDriver = $this->RestRequestAuth("telegramUser","getBy", $requestParams, $shopObject->secret_key);
         
-        var_dump($requestCheckAdminDriver);
         if($requestCheckAdminDriver != null)
         {
-           // Определим админ он или закупщик
-           if($requestCheckAdminDriver == self::TYPE_ADMIN) $this->type = self::TYPE_ADMIN;
-           else if($requestCheckAdminDriver == self::TYPE_DRIVER) $this->type = self::TYPE_DRIVER;
+            $this->type = $requestCheckAdminDriver->type;
+
+        //    // Определим админ он или закупщик
+        //    if($requestCheckAdminDriver->type == self::TYPE_ADMIN) $this->type = self::TYPE_ADMIN;
+        //    else if($requestCheckAdminDriver->type == self::TYPE_DRIVER) $this->type = self::TYPE_DRIVER;
         }
         else {
             $requestCheckSupplier = $this->getSupplierInfo($chatID);

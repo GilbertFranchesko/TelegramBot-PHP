@@ -30,11 +30,11 @@ class StartCommand extends Command
         $Stykovka = new Stykovka($_GET['bot'], $chatID);
 
 
-        $General = new General($this->telegram);
+        $General = new General($this->telegram, $Stykovka->type);
 
 
         $this->replyWithChatAction(['action' => Actions::TYPING]);
-        $this->replyWithMessage(['text' => "hello ".$Stykovka->supplier->container, "reply_markup" => $General->get()]);
+        $this->replyWithMessage(['text' => "hello ", "reply_markup" => $General->get()]);
 
     }
 }
