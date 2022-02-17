@@ -16,15 +16,19 @@ class Stykovka
     public $telegramToken;
     public $secretKey;
     public $status;
+    public $type;
 
     public $supplier;
+
+    const TYPE_ADMIN = "Администратор";
+    const TYPE_SUPPLIER = "Поставщик";
+    const TYPE_DRIVER = "Водитель";
 
     private $APIUrl = "https://femzone.space/";
 
     function __construct($telegramToken, $chatID)
     {
         $shopObject = $this->initStore($telegramToken);
-        
         $this->name = $shopObject->name;
         $this->URL = $shopObject->URL;
         $this->apiKey = $shopObject->api_key;
@@ -32,8 +36,29 @@ class Stykovka
         $this->secretKey = $shopObject->secret_key;
         $this->status = $shopObject->status;
 
-        $supplierData = $this->getSupplierInfo($chatID);
-        $this->supplier = new Supplier($supplierData->sup_id, $supplierData->cont, $supplierData->chat_id);
+        $requestParams = array(
+            "chat_id" => $chatID
+        ); 
+        $requestCheckAdminDriver = $this->RestRequestAuth("telegramUser","getBy", $requestParams, $shopObject->secret_key);
+        
+        var_dump($requestCheckAdminDriver);
+        if($requestCheckAdminDriver != null)
+        {
+           // Определим админ он или закупщик
+           if($requestCheckAdminDriver == self::TYPE_ADMIN) $this->type = self::TYPE_ADMIN;
+           else if($requestCheckAdminDriver == self::TYPE_DRIVER) $this->type = self::TYPE_DRIVER;
+        }
+        else {
+            $requestCheckSupplier = $this->getSupplierInfo($chatID);
+
+            if($requestCheckSupplier == null) echo "not in db";
+            else $this->supplier = $requestCheckSupplier;
+        }
+
+        
+
+        // $supplierData = $this->getSupplierInfo($chatID);
+        // $this->supplier = new Supplier($supplierData->sup_id, $supplierData->cont, $supplierData->chat_id);
     }
 
     public function initStore($tg_token)   
