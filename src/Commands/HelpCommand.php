@@ -2,6 +2,8 @@
 
 namespace Sync\Bot\Commands;
 
+use Sync\Bot\Scripts\Registry;
+
 use Telegram\Bot\Commands\Command;
 
 
@@ -25,13 +27,18 @@ class HelpCommand extends Command
      */
     public function handle($arguments)
     {
-        $commands = $this->telegram->getCommands();
+        $supplierObject = Registry::get("supplierObject");
+        var_dump($supplierObject);
+        // $commands = $this->telegram->getCommands();
 
-        $text = '';
-        foreach ($commands as $name => $handler) {
-            $text .= sprintf('/%s - %s'.PHP_EOL, $name, $handler->getDescription());
-        }
+        // $text = '';
+        // foreach ($commands as $name => $handler) {
+        //     $text .= sprintf('/%s - %s'.PHP_EOL, $name, $handler->getDescription());
+        // }
 
-        $this->replyWithMessage(compact('text'));
+        // $this->replyWithMessage(compact('text'));
+
+            
+
     }
 }

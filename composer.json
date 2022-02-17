@@ -8,7 +8,9 @@
         "psr-4": {
             "Sync\\Bot\\": "src/",
             "Sync\\Bot\\Commands\\": "src/Commands/",
-            "Sync\\Bot\\Scripts\\": "src/Scripts"
+            "Sync\\Bot\\Scripts\\": "src/Scripts",
+            "Sync\\Bot\\Keyboards\\": "src/Keyboards",
+            "Sync\\Bot\\Models\\": "src/Models"
         }
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Sync\Bot\Scripts;
 
+use Sync\Bot\Models\Supplier;
+
 class Stykovka
 {
 
@@ -15,9 +17,11 @@ class Stykovka
     public $secretKey;
     public $status;
 
+    public $supplier;
+
     private $APIUrl = "https://femzone.space/";
 
-    function __construct($telegramToken)
+    function __construct($telegramToken, $chatID)
     {
         $shopObject = $this->initStore($telegramToken);
         
@@ -27,17 +31,9 @@ class Stykovka
         $this->telegramToken = $shopObject->tg_token;
         $this->secretKey = $shopObject->secret_key;
         $this->status = $shopObject->status;
-    }
 
-    public function setToken($storeToken)
-    {
-        $this->token = $storeToken;
-        return true;
-    }
-
-    public function showToken()
-    {
-        return $this->token;
+        $supplierData = $this->getSupplierInfo($chatID);
+        $this->supplier = new Supplier($supplierData->sup_id, $supplierData->cont, $supplierData->chat_id);
     }
 
     public function initStore($tg_token)   
@@ -50,6 +46,46 @@ class Stykovka
         return $request;    
     }
 
+
+    public function getSupplierInfo($chatID)
+    {
+        $requestParams = array(
+            "chat_id" => $chatID
+        );
+
+        $request = $this->RestRequestAuth("supplier", "getBy", $requestParams, $this->secretKey);
+        return $request;
+    }
+
+    private function RestRequestAuth($controller, $action, $body,$token)
+    {
+
+        $modifyURL = $this->APIUrl.$controller."/".$action;
+
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+          CURLOPT_URL => $modifyURL,
+          CURLOPT_RETURNTRANSFER => true,
+          CURLOPT_ENCODING => '',
+          CURLOPT_MAXREDIRS => 10,
+          CURLOPT_TIMEOUT => 0,
+          CURLOPT_FOLLOWLOCATION => true,
+          CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+          CURLOPT_CUSTOMREQUEST => "POST",
+          CURLOPT_POSTFIELDS => json_encode($body),
+          CURLOPT_HTTPHEADER => array(
+            'Authorization: Token '.$token.'',
+            'Content-Type: application/json'
+          )
+        ));
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
+
+        return json_decode($response);
+    }
 
     private function RestRequest($controller, $action, $body)
     {
@@ -76,5 +112,6 @@ class Stykovka
 
         return json_decode($response);
     }
+
 
 }

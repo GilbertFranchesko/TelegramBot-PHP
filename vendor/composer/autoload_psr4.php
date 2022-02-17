@@ -8,6 +8,8 @@ $baseDir = dirname($vendorDir);
 return array(
     'Telegram\\Bot\\' => array($vendorDir . '/irazasyed/telegram-bot-sdk/src'),
     'Sync\\Bot\\Scripts\\' => array($baseDir . '/src/Scripts'),
+    'Sync\\Bot\\Models\\' => array($baseDir . '/src/Models'),
+    'Sync\\Bot\\Keyboards\\' => array($baseDir . '/src/Keyboards'),
     'Sync\\Bot\\Commands\\' => array($baseDir . '/src/Commands'),
     'Sync\\Bot\\' => array($baseDir . '/src'),
     'Symfony\\Polyfill\\Php80\\' => array($vendorDir . '/symfony/polyfill-php80'),

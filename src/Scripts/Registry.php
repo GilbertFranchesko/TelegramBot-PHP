@@ -9,6 +9,9 @@ namespace Sync\Bot\Scripts;
 
 class Registry
 {
+
+	public $data;
+	
 	private static $_storage = array();
 
 
