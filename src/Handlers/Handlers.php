@@ -14,6 +14,8 @@ class Handlers
     public $routeArray;
     public $routeStepsArray;
 
+    public $keyboard;
+
     public $chatID;
 
     function __construct($client, $updates)

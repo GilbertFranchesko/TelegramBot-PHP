@@ -7,19 +7,21 @@ use Sync\Bot\Keyboards\Statistics as StatisticsKeyboard;
 
 use Sync\Bot\Scripts\Stykovka;
 use Sync\Bot\Handlers\Handlers;
-
+    
 
 class Statistics extends Handlers
 {
 
     public $steps = array(
-        "Статусы заказов" => "today",
+        "Статусы заказов" => "statuses",
+        "Маржа" => "profit",
+        "Топ 10 продаж" => "topTenOrders",
         "➖ Отменить" => "cancel"
     );
 
     public function handle()
     {
-        if(!$this->permission([Stykovka::TYPE_ADMIN, Stykovka::TYPE_DRIVER])) return;
+        if(!$this->permission([Stykovka::TYPE_ADMIN])) return;
 
         $StatisticsReplyInit = new StatisticsKeyboard($this->client, $this->chatID);
 
@@ -31,11 +33,26 @@ class Statistics extends Handlers
 
     }
 
-    public function today()
+    public function statuses()
     {
+        if(!$this->permission([Stykovka::TYPE_ADMIN])) return;
+
+        $StatisticsReplyInit = new StatisticsKeyboard($this->client, $this->chatID);
         $response = $this->client->sendMessage([
             'chat_id' => $this->chatID, 
-            'text' => "Работаем"
+            'text' => "Выбери период",
+            "reply_markup" => $StatisticsReplyInit->period()
           ]);
     }
+
+    public function profit()
+    {
+        
+    }
+
+    public function topTenOrders()
+    {
+
+    }
+
 }

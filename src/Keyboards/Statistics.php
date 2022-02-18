@@ -31,6 +31,23 @@ class Statistics
         return $replyMarkup;
     }
 
+    public function period()
+    {
+        $keyboards = [
+            ['📝Сегодня', '📝Вчера', '📝Позавчера'],
+            ['📝7 дней', '📝30 дней', '📝Весь период'],
+            ['➖ Отменить']
+        ];
+
+        $replyMarkup = $this->client->replyKeyboardMarkup([
+            'keyboard' => $keyboards, 
+            'resize_keyboard' => true, 
+            'one_time_keyboard' => false
+        ]);
+
+        return $replyMarkup;
+    }
+
 
 
 
