@@ -25,6 +25,8 @@ class General
 
     public function get()
     {
+
+        $keyboards = null;
         if($this->type == Stykovka::TYPE_ADMIN)
         {
             $keyboards = [
@@ -39,12 +41,17 @@ class General
             ];
         }
 
-        $replyMarkup = $this->client->replyKeyboardMarkup([
-            'keyboard' => $keyboards, 
-            'resize_keyboard' => true, 
-            'one_time_keyboard' => false
-        ]);
-
+       if($keyboards == null)
+       {
+         $replyMarkup = $this->client->replyKeyboardHide();           
+       }
+       else {
+            $replyMarkup = $this->client->replyKeyboardMarkup([
+                'keyboard' => $keyboards, 
+                'resize_keyboard' => true, 
+                'one_time_keyboard' => false
+            ]);
+       }
         return $replyMarkup;
     }
 

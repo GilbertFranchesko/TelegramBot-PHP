@@ -10,6 +10,7 @@ return array(
     'Sync\\Bot\\Scripts\\' => array($baseDir . '/src/Scripts'),
     'Sync\\Bot\\Models\\' => array($baseDir . '/src/Models'),
     'Sync\\Bot\\Keyboards\\' => array($baseDir . '/src/Keyboards'),
+    'Sync\\Bot\\Handlers\\' => array($baseDir . '/src/Handlers'),
     'Sync\\Bot\\Commands\\' => array($baseDir . '/src/Commands'),
     'Sync\\Bot\\' => array($baseDir . '/src'),
     'Symfony\\Polyfill\\Php80\\' => array($vendorDir . '/symfony/polyfill-php80'),

@@ -14,6 +14,8 @@ ini_set('display_errors', 1);
 use Telegram\Bot\Api;
 use Sync\Bot\Scripts\Stykovka;
 
+use Sync\Bot\Handlers\Handlers;
+
 $Token = $_GET['bot'];
 
 $telegram = new Api($Token);
@@ -30,14 +32,22 @@ $chatID = $updates->getMessage()->getFrom()->getId();
 
 $messageText = $updates->getMessage()->getText();
 
-switch($messageText)
-{
-    case "📊 Статистика":
-        {
-            $response = $telegram->sendMessage([
-                'chat_id' => '447774527', 
-                'text' => "Hello"
-              ]);
-            break;
-        }
-}
+$HandlersRouting = new Handlers($telegram, $updates);
+
+$handlersRoutes = array(
+    "📊 Статистика" => Sync\Bot\Handlers\Statistics::class
+);
+
+$HandlersRouting->routing($handlersRoutes);
+
+// switch($messageText)
+// {
+//     case "📊 Статистика":
+//         {
+//             $response = $telegram->sendMessage([
+//                 'chat_id' => '447774527', 
+//                 'text' => "Hello"
+//               ]);
+//             break;
+//         }
+// }
