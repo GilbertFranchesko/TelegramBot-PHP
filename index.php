@@ -35,10 +35,11 @@ $messageText = $updates->getMessage()->getText();
 $HandlersRouting = new Handlers($telegram, $updates);
 
 $handlersRoutes = array(
-    "📊 Статистика" => Sync\Bot\Handlers\Statistics::class
+    "📊 Статистика" => Sync\Bot\Handlers\Statistics::class  
 );
 
-$HandlersRouting->routing($handlersRoutes);
+$HandlersRouting->routeArray = $handlersRoutes;
+$HandlersRouting->routing();
 
 // switch($messageText)
 // {
