@@ -34,7 +34,7 @@ class StartCommand extends Command
 
 
         $this->replyWithChatAction(['action' => Actions::TYPING]);
-        $this->replyWithMessage(['text' => "hello ", "reply_markup" => $General->get()]);
+        $this->replyWithMessage(['text' => "$Stykovka->name", "reply_markup" => $General->get()]);
 
     }
 }
