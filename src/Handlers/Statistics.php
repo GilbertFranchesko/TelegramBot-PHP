@@ -132,7 +132,7 @@ class Statistics extends Handlers
     public function allOrderStats()
     {
         $Stykovka = new Stykovka($_GET['bot'], $this->chatID);
-        $statisticData = $Stykovka->getOrdersStatistic(0, 1);
+        $statisticData = $Stykovka->getOrdersStatistic(0,0,1);
 
         $response = $this->client->sendMessage([
             'chat_id' => $this->chatID, 

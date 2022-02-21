@@ -95,11 +95,12 @@ class Stykovka
     }
 
 
-    public function getOrdersStatistic($days, $period)
+    public function getOrdersStatistic($days, $period, $all=null)
     {
         $requestParams = array(
             "days" => $days,
-            "period" => $period
+            "period" => $period,
+            "all" => $all
         );
 
         var_dump($requestParams);
