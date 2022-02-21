@@ -306,6 +306,11 @@ class Api
         return new Message($response->getDecodedBody());
     }
 
+    public function InlineKeyboardButton(array $keyboards)
+    {
+        return json_encode($keyboards);
+    }
+
     /**
      * Forward messages of any kind.
      *

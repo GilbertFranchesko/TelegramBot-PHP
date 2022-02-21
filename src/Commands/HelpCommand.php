@@ -27,18 +27,19 @@ class HelpCommand extends Command
      */
     public function handle($arguments)
     {
-        $supplierObject = Registry::get("supplierObject");
-        var_dump($supplierObject);
-        // $commands = $this->telegram->getCommands();
+        $keyboard = array(
+            "text" => "TEST",
+            "callback_data" => "testCall"
+        );
+        $inline_button1 = array("text"=>"Google url","url"=>"http://google.com");
+        $inline_button2 = array("text"=>"work plz","callback_data"=>'/plz');
+        $inline_keyboard = [[$inline_button1,$inline_button2]];
+        $keyboard=array("inline_keyboard"=>$inline_keyboard);
 
-        // $text = '';
-        // foreach ($commands as $name => $handler) {
-        //     $text .= sprintf('/%s - %s'.PHP_EOL, $name, $handler->getDescription());
-        // }
+        $replyMarkup = $this->telegram->InlineKeyboardButton($keyboard);
+        var_dump($replyMarkup);
 
-        // $this->replyWithMessage(compact('text'));
-
-            
+        $this->replyWithMessage(['text' => "test", "reply_markup" => $replyMarkup]);
 
     }
 }

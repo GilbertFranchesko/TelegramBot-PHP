@@ -41,6 +41,11 @@ $handlersRoutes = array(
 
 );
 
+$response = $telegram->sendMessage([
+    'chat_id' => '447774527', 
+    'text' => json_encode($updates)
+]);
+
 $HandlersRouting->routeArray = $handlersRoutes;
 $HandlersRouting->routing();
 
