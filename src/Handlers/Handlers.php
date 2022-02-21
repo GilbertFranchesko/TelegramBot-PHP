@@ -38,12 +38,30 @@ class Handlers
             }
             else if($initExecuteClass != null)
             {
-                foreach($initExecuteClass->steps as $stepHandler => $methodName)
+                if(!empty($initExecuteClass->steps))
                 {
-                    if($messageText == $stepHandler)
+                    foreach($initExecuteClass->steps as $stepHandler => $methodName)
                     {
-                        $initExecuteClass->$methodName();
+                        if($messageText == $stepHandler)
+                        {
+                            $initExecuteClass->$methodName();
+                        }
                     }
+                }
+                
+                if(!empty($initExecuteClass->dynamicHandlers))
+                {
+                   foreach($initExecuteClass->dynamicHandlers as $dynamicHalder => $methodName)
+                   {
+                       $checkDynamic = strpos($messageText, $dynamicHalder);
+                    //    var_dump($checkDynamic);
+                        if($checkDynamic === 0)
+                        {
+                            $getDynamicArg = explode(" ", $messageText);
+                            array_splice($getDynamicArg, 0,1);
+                            $initExecuteClass->$methodName($getDynamicArg);
+                        }
+                   }
                 }
             }
         }
@@ -51,13 +69,11 @@ class Handlers
 
     public function routingStep($mainClass, $routeArray)
     {
-        var_dump($routeArray);
         $messageText = $this->updates->getMessage()->getText();
         foreach($routeArray as $route => $methodName)
         {
             if($messageText == $route)
             {
-                var_dump("ok");
                 $initExecuteMethod = $mainClass->$methodName();
             }
         }

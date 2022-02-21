@@ -7,7 +7,7 @@ use Sync\Bot\Keyboards\Statistics as StatisticsKeyboard;
 
 use Sync\Bot\Scripts\Stykovka;
 use Sync\Bot\Handlers\Handlers;
-    
+
 
 class Statistics extends Handlers
 {

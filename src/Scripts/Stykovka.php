@@ -29,6 +29,7 @@ class Stykovka
     function __construct($telegramToken, $chatID)
     {
         $shopObject = $this->initStore($telegramToken);
+        $this->id = $shopObject->id;
         $this->name = $shopObject->name;
         $this->URL = $shopObject->URL;
         $this->apiKey = $shopObject->api_key;
@@ -80,6 +81,16 @@ class Stykovka
         );
 
         $request = $this->RestRequestAuth("supplier", "getBy", $requestParams, $this->secretKey);
+        return $request;
+    }
+
+    public function getSuppliersByStore()
+    {
+        $requestParams = array(
+            "store_id" => $this->id
+        );
+
+        $request = $this->RestRequestAuth("suppliersToStore", "getManyBy", $requestParams, $this->secretKey);
         return $request;
     }
 

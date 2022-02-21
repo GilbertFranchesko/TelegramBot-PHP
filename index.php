@@ -36,7 +36,8 @@ $HandlersRouting = new Handlers($telegram, $updates);
 
 $handlersRoutes = array(
     "📊 Статистика" => Sync\Bot\Handlers\Statistics::class,
-    "👗 Заказы" => Sync\Bot\Handlers\Orders::class
+    "👗 Заказы" => Sync\Bot\Handlers\Orders::class,
+    "💀 Поставщики" => Sync\Bot\Handlers\Suppliers::class
 );
 
 $HandlersRouting->routeArray = $handlersRoutes;
