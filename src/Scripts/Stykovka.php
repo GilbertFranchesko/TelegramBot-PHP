@@ -94,6 +94,52 @@ class Stykovka
         return $request;
     }
 
+
+    public function getOrdersStatistic($days, $period)
+    {
+        $requestParams = array(
+            "days" => $days,
+            "period" => $period
+        );
+
+        var_dump($requestParams);
+
+        $response = $this->CustomRequest("GET", $this->URL."/index.php?route=rest/tg_bot_api/statistic/orderStatistic", $requestParams, $this->apiKey);
+
+        var_dump($response);
+        return $response;
+        
+    }
+
+
+    private function CustomRequest($type, $url, $body, $token)
+    {
+        $curl = curl_init();
+        var_dump(json_encode($body));
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => $url,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => $type,
+            CURLOPT_POSTFIELDS => json_encode($body),
+            CURLOPT_HTTPHEADER => array(
+              'Authorization: Token '.$token.'',
+              'Content-Type: application/json'
+            )
+          ));
+  
+        $response = curl_exec($curl);
+  
+        curl_close($curl);
+  
+        return json_decode($response);
+    }
+
+
     private function RestRequestAuth($controller, $action, $body,$token)
     {
 

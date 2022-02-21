@@ -16,7 +16,14 @@ class Statistics extends Handlers
         "Статусы заказов" => "statuses",
         "Маржа" => "profit",
         "Топ 10 продаж" => "topTenOrders",
-        "➖ Отменить" => "cancel"
+        "➖ Отменить" => "cancel",
+
+        "📝Сегодня" => "todayOrderStats",
+        "📝Вчера" => "yesterdayOrderStats",
+        "📝Позавчера" => "towDaysAgoOrderStats",
+        "📝7 дней" => "weekOrderStats",
+        "📝30 дней" => "monthAgoOrderStats",
+        "📝Весь период" => "allOrderStats"
     );
 
     public function handle()
@@ -47,12 +54,91 @@ class Statistics extends Handlers
 
     public function profit()
     {
-        
+        if(!$this->permission([Stykovka::TYPE_ADMIN])) return;
+        $StatisticsReplyInit = new StatisticsKeyboard($this->client, $this->chatID);
+        $response = $this->client->sendMessage([
+            'chat_id' => $this->chatID, 
+            'text' => "Выбери период",
+            "reply_markup" => $StatisticsReplyInit->periodProfit()
+          ]);
+
     }
 
     public function topTenOrders()
     {
 
+    }
+
+    public function todayOrderStats()
+    {
+        $Stykovka = new Stykovka($_GET['bot'], $this->chatID);
+        $statisticData = $Stykovka->getOrdersStatistic(0, 0);
+
+        $response = $this->client->sendMessage([
+            'chat_id' => $this->chatID, 
+            'text' => $statisticData->data,
+            "parse_mode" => "html"
+          ]);
+    }
+
+    public function yesterdayOrderStats()
+    {
+        $Stykovka = new Stykovka($_GET['bot'], $this->chatID);
+        $statisticData = $Stykovka->getOrdersStatistic(1, 0);
+
+        $response = $this->client->sendMessage([
+            'chat_id' => $this->chatID, 
+            'text' => $statisticData->data,
+            "parse_mode" => "html"
+          ]);
+    }
+
+    public function towDaysAgoOrderStats()
+    {
+        $Stykovka = new Stykovka($_GET['bot'], $this->chatID);
+        $statisticData = $Stykovka->getOrdersStatistic(2, 0);
+
+        $response = $this->client->sendMessage([
+            'chat_id' => $this->chatID, 
+            'text' => $statisticData->data,
+            "parse_mode" => "html"
+          ]);
+    }
+
+    public function weekOrderStats()
+    {
+        $Stykovka = new Stykovka($_GET['bot'], $this->chatID);
+        $statisticData = $Stykovka->getOrdersStatistic(7, 1);
+
+        $response = $this->client->sendMessage([
+            'chat_id' => $this->chatID, 
+            'text' => $statisticData->data,
+            "parse_mode" => "html"
+          ]);
+    }
+
+    public function monthAgoOrderStats()
+    {
+        $Stykovka = new Stykovka($_GET['bot'], $this->chatID);
+        $statisticData = $Stykovka->getOrdersStatistic(30, 1);
+
+        $response = $this->client->sendMessage([
+            'chat_id' => $this->chatID, 
+            'text' => $statisticData->data,
+            "parse_mode" => "html"
+          ]);
+    }
+
+    public function allOrderStats()
+    {
+        $Stykovka = new Stykovka($_GET['bot'], $this->chatID);
+        $statisticData = $Stykovka->getOrdersStatistic(0, 1);
+
+        $response = $this->client->sendMessage([
+            'chat_id' => $this->chatID, 
+            'text' => $statisticData->data,
+            "parse_mode" => "html"
+          ]); 
     }
 
 }
