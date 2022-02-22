@@ -66,7 +66,13 @@ class Statistics extends Handlers
 
     public function topTenOrders()
     {
-
+        if(!$this->permission([Stykovka::TYPE_ADMIN])) return;
+        $StatisticsReplyInit = new StatisticsKeyboard($this->client, $this->chatID);
+        $response = $this->client->sendMessage([
+            'chat_id' => $this->chatID, 
+            'text' => "Выбери период",
+            "reply_markup" => $StatisticsReplyInit->periodTopTenOrders()
+          ]);
     }
 
     public function todayOrderStats()

@@ -65,6 +65,23 @@ class Statistics
         return $replyMarkup;
     }
 
+    public function periodTopTenOrders()
+    {
+        $keyboards = [
+            ['📈За сегодня', '📈За вчера', '📈За 3 дня'],
+            ['📈За 5 дней', '📈За неделю'],
+            ['➖ Отменить']
+        ];
+
+        $replyMarkup = $this->client->replyKeyboardMarkup([
+            'keyboard' => $keyboards, 
+            'resize_keyboard' => true, 
+            'one_time_keyboard' => false
+        ]);
+
+        return $replyMarkup;
+    }
+
 
 
 
