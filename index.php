@@ -15,6 +15,7 @@ use Telegram\Bot\Api;
 use Sync\Bot\Scripts\Stykovka;
 
 use Sync\Bot\Handlers\Handlers;
+use Sync\Bot\Callbacks\Callback;
 
 $Token = $_GET['bot'];
 
@@ -26,28 +27,51 @@ $telegram->addCommands([Sync\Bot\Commands\StartCommand::class,
 $commandsHandler = $telegram->commandsHandler(true);
 
 
+
+
+
 $updates = $telegram->getWebhookUpdates();
 
-$chatID = $updates->getMessage()->getFrom()->getId();
-
-$messageText = $updates->getMessage()->getText();
-
-$HandlersRouting = new Handlers($telegram, $updates);
-
-$handlersRoutes = array(
-    "📊 Статистика" => Sync\Bot\Handlers\Statistics::class,
-    "👗 Заказы" => Sync\Bot\Handlers\Orders::class,
-    "💀 Поставщики" => Sync\Bot\Handlers\Suppliers::class
-
-);
-
 $response = $telegram->sendMessage([
-    'chat_id' => '447774527', 
+    'chat_id' => 447774527, 
     'text' => json_encode($updates)
-]);
+  ]);
 
-$HandlersRouting->routeArray = $handlersRoutes;
-$HandlersRouting->routing();
+if($updates->getCallbackQuery() != NULL)
+{
+    $CallbacksRouting = new Callback($telegram, $updates);
+    $callbackRouteArray = array(
+        "/offproduct" => Sync\Bot\Callbacks\Product::class
+    );
+    $CallbacksRouting->routeArray = $callbackRouteArray;
+    
+    $CallbacksRouting->routing();  
+}
+else 
+{
+    $chatID =  $updates->getMessage()->getFrom()->getId();
+    
+    $messageText = $updates->getMessage()->getText();
+    
+    $HandlersRouting = new Handlers($telegram, $updates);
+    
+    
+    $handlersRoutes = array(
+        "📊 Статистика" => Sync\Bot\Handlers\Statistics::class,
+        "👗 Заказы" => Sync\Bot\Handlers\Orders::class,
+        "💀 Поставщики" => Sync\Bot\Handlers\Suppliers::class
+    );
+    
+    
+    
+    $HandlersRouting->routeArray = $handlersRoutes;
+   
+    
+    
+    $HandlersRouting->routing();
+}
+
+
 
 // switch($messageText)
 // {

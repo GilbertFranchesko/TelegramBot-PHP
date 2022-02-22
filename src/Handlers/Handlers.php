@@ -14,6 +14,8 @@ class Handlers
     public $routeArray;
     public $routeStepsArray;
 
+    public $callbackRouteArray;
+
     public $keyboard;
 
     public $chatID;
@@ -63,6 +65,24 @@ class Handlers
                         }
                    }
                 }
+
+                // if(!empty($this->callbackRouteArray) && isset($this->client->callback_query))
+                // { 
+                //     foreach($this->callbackRouteArray as $callbackQuery => $className)
+                //     {
+                        
+                        
+                //         $initExecuteClass = new $className($this->client, $this->updates);
+                //         if($this->client->callback_query->data == $callbackQuery)
+                //         {
+                //             $methodName = str_replace("/", "", $callbackQuery);
+                //             var_dump($methodName);
+                //             $initExecuteClass->$methodName($this->updates);
+                //         }
+                //     }
+                // }
+
+
             }
         }
     }

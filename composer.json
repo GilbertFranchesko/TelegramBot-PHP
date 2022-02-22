@@ -11,7 +11,8 @@
             "Sync\\Bot\\Scripts\\": "src/Scripts",
             "Sync\\Bot\\Keyboards\\": "src/Keyboards",
             "Sync\\Bot\\Models\\": "src/Models",
-            "Sync\\Bot\\Handlers\\": "src/Handlers"
+            "Sync\\Bot\\Handlers\\": "src/Handlers",
+            "Sync\\Bot\\Callbacks\\": "src/Callbacks/"
         }
     }
 }

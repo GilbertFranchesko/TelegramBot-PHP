@@ -12,6 +12,7 @@ return array(
     'Sync\\Bot\\Keyboards\\' => array($baseDir . '/src/Keyboards'),
     'Sync\\Bot\\Handlers\\' => array($baseDir . '/src/Handlers'),
     'Sync\\Bot\\Commands\\' => array($baseDir . '/src/Commands'),
+    'Sync\\Bot\\Callbacks\\' => array($baseDir . '/src/Callbacks'),
     'Sync\\Bot\\' => array($baseDir . '/src'),
     'Symfony\\Polyfill\\Php80\\' => array($vendorDir . '/symfony/polyfill-php80'),
     'Symfony\\Polyfill\\Php72\\' => array($vendorDir . '/symfony/polyfill-php72'),

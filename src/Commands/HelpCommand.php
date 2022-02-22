@@ -32,12 +32,11 @@ class HelpCommand extends Command
             "callback_data" => "testCall"
         );
         $inline_button1 = array("text"=>"Google url","url"=>"http://google.com");
-        $inline_button2 = array("text"=>"work plz","callback_data"=>'/plz');
+        $inline_button2 = array("text"=>"work plz","callback_data"=>'/offproduct');
         $inline_keyboard = [[$inline_button1,$inline_button2]];
         $keyboard=array("inline_keyboard"=>$inline_keyboard);
 
         $replyMarkup = $this->telegram->InlineKeyboardButton($keyboard);
-        var_dump($replyMarkup);
 
         $this->replyWithMessage(['text' => "test", "reply_markup" => $replyMarkup]);
 

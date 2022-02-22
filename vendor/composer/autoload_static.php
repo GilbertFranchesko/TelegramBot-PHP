@@ -33,6 +33,7 @@ class ComposerStaticInit5ce898ae73a0558ca69d3499a86f5d11
             'Sync\\Bot\\Keyboards\\' => 19,
             'Sync\\Bot\\Handlers\\' => 18,
             'Sync\\Bot\\Commands\\' => 18,
+            'Sync\\Bot\\Callbacks\\' => 19,
             'Sync\\Bot\\' => 9,
             'Symfony\\Polyfill\\Php80\\' => 23,
             'Symfony\\Polyfill\\Php72\\' => 23,
@@ -94,6 +95,10 @@ class ComposerStaticInit5ce898ae73a0558ca69d3499a86f5d11
         'Sync\\Bot\\Commands\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src/Commands',
+        ),
+        'Sync\\Bot\\Callbacks\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/Callbacks',
         ),
         'Sync\\Bot\\' => 
         array (
@@ -651,12 +656,17 @@ class ComposerStaticInit5ce898ae73a0558ca69d3499a86f5d11
         'Symfony\\Polyfill\\Mbstring\\Mbstring' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/Mbstring.php',
         'Symfony\\Polyfill\\Php72\\Php72' => __DIR__ . '/..' . '/symfony/polyfill-php72/Php72.php',
         'Symfony\\Polyfill\\Php80\\Php80' => __DIR__ . '/..' . '/symfony/polyfill-php80/Php80.php',
+        'Sync\\Bot\\Callbacks\\Product' => __DIR__ . '/../..' . '/src/Callbacks/Product.php',
         'Sync\\Bot\\Commands\\HelpCommand' => __DIR__ . '/../..' . '/src/Commands/HelpCommand.php',
         'Sync\\Bot\\Commands\\StartCommand' => __DIR__ . '/../..' . '/src/Commands/StartCommand.php',
         'Sync\\Bot\\Handlers\\Handlers' => __DIR__ . '/../..' . '/src/Handlers/Handlers.php',
+        'Sync\\Bot\\Handlers\\Orders' => __DIR__ . '/../..' . '/src/Handlers/Orders.php',
         'Sync\\Bot\\Handlers\\Statistics' => __DIR__ . '/../..' . '/src/Handlers/Statistics.php',
+        'Sync\\Bot\\Handlers\\Suppliers' => __DIR__ . '/../..' . '/src/Handlers/Suppliers.php',
         'Sync\\Bot\\Keyboards\\General' => __DIR__ . '/../..' . '/src/Keyboards/General.php',
+        'Sync\\Bot\\Keyboards\\Orders' => __DIR__ . '/../..' . '/src/Keyboards/Orders.php',
         'Sync\\Bot\\Keyboards\\Statistics' => __DIR__ . '/../..' . '/src/Keyboards/Statistics.php',
+        'Sync\\Bot\\Keyboards\\Suppliers' => __DIR__ . '/../..' . '/src/Keyboards/Suppliers.php',
         'Sync\\Bot\\Models\\Supplier' => __DIR__ . '/../..' . '/src/Models/Supplier.php',
         'Sync\\Bot\\Scripts\\Registry' => __DIR__ . '/../..' . '/src/Scripts/Registry.php',
         'Sync\\Bot\\Scripts\\Stykovka' => __DIR__ . '/../..' . '/src/Scripts/Stykovka.php',

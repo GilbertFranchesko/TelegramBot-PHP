@@ -39,7 +39,7 @@ class Suppliers extends Handlers
     public function getSupplierInfo($dynamic)
     {
         $response = $this->client->sendMessage([
-            'chat_id' => $this->chatID, 
+            'chat_id' => $this->chatID,     
             'text' => $dynamic[0]
           ]);
     }
