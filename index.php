@@ -26,16 +26,8 @@ $telegram->addCommands([Sync\Bot\Commands\StartCommand::class,
 ]);
 $commandsHandler = $telegram->commandsHandler(true);
 
-
-
-
-
 $updates = $telegram->getWebhookUpdates();
 
-$response = $telegram->sendMessage([
-    'chat_id' => 447774527, 
-    'text' => json_encode($updates)
-  ]);
 
 if($updates->getCallbackQuery() != NULL)
 {

@@ -31,7 +31,7 @@ class HelpCommand extends Command
             "text" => "TEST",
             "callback_data" => "testCall"
         );
-        $inline_button1 = array("text"=>"Google url","url"=>"http://google.com");
+        $inline_button1 = array("text"=>"Google url","callback_data"=>"/test");
         $inline_button2 = array("text"=>"work plz","callback_data"=>'/offproduct');
         $inline_keyboard = [[$inline_button1,$inline_button2]];
         $keyboard=array("inline_keyboard"=>$inline_keyboard);

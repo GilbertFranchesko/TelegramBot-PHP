@@ -22,10 +22,15 @@ class Callback
     {
         foreach($this->routeArray as $callbackData => $className)
         {
-            $methodName = str_replace("/", "", $callbackData);
+            if($this->update->getCallbackQuery()->getData() == $callbackData)
+            {
+                $methodName = str_replace("/", "", $callbackData);
             
-            $initExecuteClass = new $className($this->client, $this->update);
-            $initExecuteClass->$methodName($this->update->getCallbackQuery()->getData());
+                $initExecuteClass = new $className($this->client, $this->update);
+                var_dump($methodName);
+                $initExecuteClass->$methodName($this->update->getCallbackQuery()->getData());
+            }
+            
         }
     }
 }
