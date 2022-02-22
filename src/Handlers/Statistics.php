@@ -18,12 +18,36 @@ class Statistics extends Handlers
         "Топ 10 продаж" => "topTenOrders",
         "➖ Отменить" => "cancel",
 
+/**
+ *       Статусы 
+ */
+
         "📝Сегодня" => "todayOrderStats",
         "📝Вчера" => "yesterdayOrderStats",
         "📝Позавчера" => "towDaysAgoOrderStats",
         "📝7 дней" => "weekOrderStats",
         "📝30 дней" => "monthAgoOrderStats",
-        "📝Весь период" => "allOrderStats"
+        "📝Весь период" => "allOrderStats",
+
+        
+/**
+ *       Маржа 
+ */
+
+        "💲Сегодня" => "todayProfitStats",
+        "💲Вчера" => "yesterdayProfitStats",
+        "💲7 дней" => "weekProfitStats",
+        "💲Прошлый месяц" => "monthAgoProfitStats",
+/**
+ *       Топ 10 продаж 
+ */
+        "📈За сегодня" => "todayTopTen",
+        "📈За вчера" => "yesterdayTopTen",
+        "📈За 3 дня" => "threeDaysTopTen",
+        "📈За 5 дней" => "fiveDaysTopTen",
+        "📈За неделю" => "weekTopTen"
+
+
     );
 
     public function handle()
@@ -74,6 +98,10 @@ class Statistics extends Handlers
             "reply_markup" => $StatisticsReplyInit->periodTopTenOrders()
           ]);
     }
+
+/**
+ *       Статусы 
+ */
 
     public function todayOrderStats()
     {
@@ -146,5 +174,27 @@ class Statistics extends Handlers
             "parse_mode" => "html"
           ]); 
     }
+
+/**
+ *       Маржа 
+ */
+
+    public function todayProfitStats() {}
+    public function yesterdayProfitStats() {}
+    public function weekProfitStats() {}
+    public function monthAgoProfitStats() {}
+
+/**
+ *       Топ 10 продаж 
+ */
+
+
+    public function todayTopTen() {}
+    public function yesterdayTopTen() {}
+    public function threeDaysTopTen() {}
+    public function fiveDaysTopTen() {}
+    public function weekTopTen() {}
+
+
 
 }
