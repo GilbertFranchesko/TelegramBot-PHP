@@ -3,6 +3,7 @@
 namespace Sync\Bot\Handlers;
 
 use Sync\Bot\Keyboards\Statistics as StatisticsKeyboard;
+use Sync\Bot\Keyboards\Product as ProductPreview;
 
 
 use Sync\Bot\Scripts\Stykovka;
@@ -179,17 +180,65 @@ class Statistics extends Handlers
  *       Маржа 
  */
 
-    public function todayProfitStats() {}
-    public function yesterdayProfitStats() {}
-    public function weekProfitStats() {}
-    public function monthAgoProfitStats() {}
+    public function todayProfitStats()
+    {
+        $Stykovka = new Stykovka($_GET['bot'], $this->chatID);
+        $statisticData = $Stykovka->getProfitStatic(0,0,0);
+
+        $response = $this->client->sendMessage([
+            'chat_id' => $this->chatID, 
+            'text' => $statisticData->data,
+            "parse_mode" => "html"
+          ]); 
+    }
+    public function yesterdayProfitStats() 
+    {
+        $Stykovka = new Stykovka($_GET['bot'], $this->chatID);
+        $statisticData = $Stykovka->getProfitStatic(1,0,0);
+
+        $response = $this->client->sendMessage([
+            'chat_id' => $this->chatID, 
+            'text' => $statisticData->data,
+            "parse_mode" => "html"
+          ]); 
+    }
+    public function weekProfitStats() {
+        $Stykovka = new Stykovka($_GET['bot'], $this->chatID);
+        $statisticData = $Stykovka->getProfitStatic(7,1,0);
+
+        $response = $this->client->sendMessage([
+            'chat_id' => $this->chatID, 
+            'text' => $statisticData->data,
+            "parse_mode" => "html"
+          ]); 
+    }
+    public function monthAgoProfitStats() {
+        $Stykovka = new Stykovka($_GET['bot'], $this->chatID);
+        $statisticData = $Stykovka->getProfitStatic(0,0,1);
+
+        $response = $this->client->sendMessage([
+            'chat_id' => $this->chatID, 
+            'text' => $statisticData->data,
+            "parse_mode" => "html"
+          ]); 
+    }
 
 /**
  *       Топ 10 продаж 
  */
 
 
-    public function todayTopTen() {}
+    public function todayTopTen() 
+    {
+        $ProductPreview = new ProductPreview();
+        $ProductPreview->infoProduct(1);
+        $response = $this->client->sendMessage([
+            'chat_id' => $this->chatID, 
+            'text' => "Модель 1",
+            "reply_markup" => $ProductPreview->get(),
+            "parse_mode" => "html"
+          ]);
+    }
     public function yesterdayTopTen() {}
     public function threeDaysTopTen() {}
     public function fiveDaysTopTen() {}

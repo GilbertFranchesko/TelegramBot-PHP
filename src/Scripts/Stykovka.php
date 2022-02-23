@@ -103,15 +103,26 @@ class Stykovka
             "all" => $all
         );
 
-        var_dump($requestParams);
-
         $response = $this->CustomRequest("GET", $this->URL."/index.php?route=rest/tg_bot_api/statistic/orderStatistic", $requestParams, $this->apiKey);
 
         var_dump($response);
-        return $response;
-        
+        return $response;   
     }
 
+    
+    public function getProfitStatic($days, $period, $month=null)
+    {
+        $requestParams = array(
+            "days" => $days,
+            "period" => $period,
+            "month" => $month
+        );
+
+        $response = $this->CustomRequest("GET", $this->URL."/index.php?route=rest/tg_bot_api/statistic/profit", $requestParams, $this->apiKey);
+
+        var_dump($response);
+        return $response;   
+    }
 
     private function CustomRequest($type, $url, $body, $token)
     {

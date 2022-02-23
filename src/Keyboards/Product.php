@@ -14,7 +14,8 @@ class Product
 
     public function get()
     {
-        $inlineKeyboard = array("inline_keyboard" => $this->keyboards);
-        return json_encode(inlineKeyboard);
+        $inlineKeyboard = array("inline_keyboard" => array(array($this->keyboards)));
+        var_dump(json_encode($inlineKeyboard));
+        return json_encode($inlineKeyboard);
     }
 }
