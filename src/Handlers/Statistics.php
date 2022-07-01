@@ -294,6 +294,8 @@ class Statistics extends Handlers
             }
         }
     }
+
+    
     public function threeDaysTopTen() 
     {
         $Stykovka = new Stykovka($_GET['bot'], $this->chatID);
