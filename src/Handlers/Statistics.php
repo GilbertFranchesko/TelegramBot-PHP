@@ -107,12 +107,12 @@ class Statistics extends Handlers
     public function todayOrderStats()
     {
         $Stykovka = new Stykovka($_GET['bot'], $this->chatID);
-        $statisticData = $Stykovka->getOrdersStatistic(0, 0);
+        $statisticData = $Stykovka->getOrdersStatistic(0,0);
 
         $response = $this->client->sendMessage([
             'chat_id' => $this->chatID, 
             'text' => $statisticData->data,
-            "parse_mode" => "html"
+            "parse_mode" => "HTML"
           ]);
     }
 
@@ -124,7 +124,7 @@ class Statistics extends Handlers
         $response = $this->client->sendMessage([
             'chat_id' => $this->chatID, 
             'text' => $statisticData->data,
-            "parse_mode" => "html"
+            "parse_mode" => "HTML"
           ]);
     }
 
@@ -143,7 +143,7 @@ class Statistics extends Handlers
     public function weekOrderStats()
     {
         $Stykovka = new Stykovka($_GET['bot'], $this->chatID);
-        $statisticData = $Stykovka->getOrdersStatistic(7, 1);
+        $statisticData = $Stykovka->getOrdersStatistic(7, 1, 0);
 
         $response = $this->client->sendMessage([
             'chat_id' => $this->chatID, 

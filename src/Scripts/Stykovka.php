@@ -24,7 +24,7 @@ class Stykovka
     const TYPE_SUPPLIER = "Поставщик";
     const TYPE_DRIVER = "Водитель";
 
-    private $APIUrl = "https://femzone.space/";
+    private $APIUrl = "http://femzone.trade/";
 
     function __construct($telegramToken, $chatID)
     {
@@ -95,39 +95,44 @@ class Stykovka
     }
 
 
-    public function getOrdersStatistic($days, $period, $all=null)
+    public function getOrdersStatistic($interval, $dateSub, $all=0)
     {
-        $requestParams = array(
-            "days" => $days,
-            "period" => $period,
-            "all" => $all
-        );
-
-        $response = $this->CustomRequest("GET", $this->URL."/index.php?route=rest/tg_bot_api/statistic/orderStatistic", $requestParams, $this->apiKey);
+        $response = $this->CustomRequest("GET", $this->URL."/index.php?route=rest/tg_bot_api/getStatsStatus&interval=".$interval, array(), $this->apiKey);
 
         var_dump($response);
         return $response;   
     }
 
     
-    public function getProfitStatic($days, $period, $month=null)
+    public function getProfitStatic($interval, $dateSub, $all=0)
     {
-        $requestParams = array(
-            "days" => $days,
-            "period" => $period,
-            "month" => $month
-        );
-
-        $response = $this->CustomRequest("GET", $this->URL."/index.php?route=rest/tg_bot_api/statistic/profit", $requestParams, $this->apiKey);
+        $response = $this->CustomRequest("GET", $this->URL."/index.php?route=rest/tg_bot_api/getProfit&interval=".$interval."&date_sub=".$dateSub."&all=".$all, array(), $this->apiKey);
 
         var_dump($response);
         return $response;   
     }
 
+    public function getSupplierProductInfo($supID)
+    {
+        $response = $this->CustomRequest("GET", $this->URL."/index.php?route=rest/tg_bot_api/getSupplierProducts&sup_id=".$supID, array(), $this->apiKey);
+
+        var_dump($this->URL."/index.php?route=rest/tg_bot_api/getSupplierProducts?sup_id=".$supID);
+        var_dump($response);
+        return $response;   
+    }
+
+    public function getSuppliersPackage()
+    {
+        $response = $this->CustomRequest("GET", $this->URL."/index.php?route=rest/tg_bot_api/getPackages", array(), $this->apiKey);
+        
+        var_dump($response);
+        return $response;
+    }
+
     private function CustomRequest($type, $url, $body, $token)
     {
         $curl = curl_init();
-        var_dump(json_encode($body));
+
         curl_setopt_array($curl, array(
             CURLOPT_URL => $url,
             CURLOPT_RETURNTRANSFER => true,
@@ -139,7 +144,7 @@ class Stykovka
             CURLOPT_CUSTOMREQUEST => $type,
             CURLOPT_POSTFIELDS => json_encode($body),
             CURLOPT_HTTPHEADER => array(
-              'Authorization: Token '.$token.'',
+              'X-Oc-Restadmin-Id: '.$token.'',
               'Content-Type: application/json'
             )
           ));
@@ -204,7 +209,6 @@ class Stykovka
         $response = curl_exec($curl);
 
         curl_close($curl);
-
         return json_decode($response);
     }
 

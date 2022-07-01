@@ -38,4 +38,25 @@ class Suppliers
 
         return $replyMarkup;        
     }
+
+    public function generatePackageSuppliers($packagesData)
+    {
+        $keyboards = array();
+        foreach($packagesData as $data)
+        {
+            array_push($keyboards. array($data['mpn']." (".$data['expr1'].")"));
+        }
+        
+        array_push($keyboards, array("➖ Отменить"));
+
+        $replyMarkup = $this->client->replyKeyboardMarkup([
+            'keyboard' => $keyboards, 
+            'resize_keyboard' => true, 
+            'one_time_keyboard' => false
+        ]);
+
+        return $replyMarkup;        
+    }
+
+    }
 }

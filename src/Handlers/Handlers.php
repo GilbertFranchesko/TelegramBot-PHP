@@ -26,6 +26,7 @@ class Handlers
         $this->updates = $updates;
 
         $this->chatID = $updates->getMessage()->getFrom()->getId();
+        // var_dump($updates->getMessage()->getFrom()->getId());
     }
 
     public function routing()

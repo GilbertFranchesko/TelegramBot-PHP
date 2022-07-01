@@ -30,6 +30,10 @@ class Orders
         ]);
 
         return $replyMarkup;
+    }
 
+    public function generateSupKeyboard()
+    {
+        $keyboards = [];
     }
 }

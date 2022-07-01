@@ -38,9 +38,15 @@ class Suppliers extends Handlers
 
     public function getSupplierInfo($dynamic)
     {
+        $supplier = $dynamic[0];
+        $Stykovka = new Stykovka($_GET['bot'], $this->chatID);
+        $supplierInfo = $Stykovka->getSupplierProductInfo($supplier);
+
+
         $response = $this->client->sendMessage([
             'chat_id' => $this->chatID,     
-            'text' => $dynamic[0]
+            'text' => $supplierInfo->data,
+            'parse_mode' => 'HTML'
           ]);
     }
 }
