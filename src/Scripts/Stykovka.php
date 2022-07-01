@@ -121,13 +121,31 @@ class Stykovka
         return $response;   
     }
 
+
     public function getSuppliersPackage()
     {
         $response = $this->CustomRequest("GET", $this->URL."/index.php?route=rest/tg_bot_api/getPackages", array(), $this->apiKey);
-        
+
         var_dump($response);
         return $response;
     }
+
+    public function getOrdersInfo()
+    {
+        $response = $this->CustomRequest("GET", $this->URL."/index.php?route=rest/tg_bot_api/getOrdersInfo", array(), $this->apiKey);
+
+        var_dump($response);
+        return $response;
+    }
+
+    public function getTopTenProducts($date)
+    {
+        $response = $this->CustomRequest("GET", $this->URL."/index.php?route=rest/tg_bot_api/getTopTenProducts&date=".$date, array(), $this->apiKey);
+
+        var_dump($response);
+        return $response;
+    }
+
 
     private function CustomRequest($type, $url, $body, $token)
     {

@@ -230,19 +230,169 @@ class Statistics extends Handlers
 
     public function todayTopTen() 
     {
-        $ProductPreview = new ProductPreview();
-        $ProductPreview->infoProduct(1);
-        $response = $this->client->sendMessage([
-            'chat_id' => $this->chatID, 
-            'text' => "Модель 1",
-            "reply_markup" => $ProductPreview->get(),
-            "parse_mode" => "html"
-          ]);
+        $Stykovka = new Stykovka($_GET['bot'], $this->chatID);
+        $getTopTenToday = $Stykovka->getTopTenProducts("today");
+        if(count($getTopTenToday) == 0) 
+        {
+            $response = $this->client->sendMessage([
+                'chat_id' => $this->chatID, 
+                'text' => "Товаров не найдено",
+                "parse_mode" => "html"
+              ]); 
+        } 
+        else
+        {
+            foreach($getTopTenToday as $productInfo)
+            {
+                $ProductPreview = new ProductPreview();
+                $ProductPreview->infoProduct($productInfo->product_id);
+
+                $textMessage = "<b>".$productInfo['name']."</b>\n\n";
+                $textMessage .= "➕ Модель: <b>".$productInfo['model']."</b>\n";
+                $textMessage .= "➕ Контейнер: <b>".$productInfo['mpn']."</b>\n";
+                $textMessage .= "➕ Заказов: <b>".$productInfo['sales']."</b>\n";
+
+                $response = $telegram->sendPhoto([
+                    'chat_id' => 'CHAT_ID', 
+                    'photo' => $productInfo['image'],
+                    'reply_markup' => $ProductPreview->get(),
+                    'caption' => $textMessage
+                ]);
+            }
+        }
     }
-    public function yesterdayTopTen() {}
-    public function threeDaysTopTen() {}
-    public function fiveDaysTopTen() {}
-    public function weekTopTen() {}
+    public function yesterdayTopTen() 
+    {
+        $Stykovka = new Stykovka($_GET['bot'], $this->chatID);
+        $getTopTenToday = $Stykovka->getTopTenProducts("yesterday");
+        if(count($getTopTenToday) == 0) 
+        {
+            $response = $this->client->sendMessage([
+                'chat_id' => $this->chatID, 
+                'text' => "Товаров не найдено",
+                "parse_mode" => "html"
+              ]); 
+        } 
+        else
+        {
+            foreach($getTopTenToday as $productInfo)
+            {
+                $ProductPreview = new ProductPreview();
+                $ProductPreview->infoProduct($productInfo->product_id);
+
+                $textMessage = "<b>".$productInfo['name']."</b>\n\n";
+                $textMessage .= "➕ Модель: <b>".$productInfo['model']."</b>\n";
+                $textMessage .= "➕ Контейнер: <b>".$productInfo['mpn']."</b>\n";
+                $textMessage .= "➕ Заказов: <b>".$productInfo['sales']."</b>\n";
+
+                $response = $telegram->sendPhoto([
+                    'chat_id' => 'CHAT_ID', 
+                    'photo' => $productInfo['image'],
+                    'reply_markup' => $ProductPreview->get(),
+                    'caption' => $textMessage
+                ]);
+            }
+        }
+    }
+    public function threeDaysTopTen() 
+    {
+        $Stykovka = new Stykovka($_GET['bot'], $this->chatID);
+        $getTopTenToday = $Stykovka->getTopTenProducts("three_day");
+        if(count($getTopTenToday) == 0) 
+        {
+            $response = $this->client->sendMessage([
+                'chat_id' => $this->chatID, 
+                'text' => "Товаров не найдено",
+                "parse_mode" => "html"
+              ]); 
+        } 
+        else
+        {
+            foreach($getTopTenToday as $productInfo)
+            {
+                $ProductPreview = new ProductPreview();
+                $ProductPreview->infoProduct($productInfo->product_id);
+
+                $textMessage = "<b>".$productInfo['name']."</b>\n\n";
+                $textMessage .= "➕ Модель: <b>".$productInfo['model']."</b>\n";
+                $textMessage .= "➕ Контейнер: <b>".$productInfo['mpn']."</b>\n";
+                $textMessage .= "➕ Заказов: <b>".$productInfo['sales']."</b>\n";
+
+                $response = $telegram->sendPhoto([
+                    'chat_id' => 'CHAT_ID', 
+                    'photo' => $productInfo['image'],
+                    'reply_markup' => $ProductPreview->get(),
+                    'caption' => $textMessage
+                ]);
+            }
+        }
+    }
+    public function fiveDaysTopTen() 
+    {
+        $Stykovka = new Stykovka($_GET['bot'], $this->chatID);
+        $getTopTenToday = $Stykovka->getTopTenProducts("five_day");
+        if(count($getTopTenToday) == 0) 
+        {
+            $response = $this->client->sendMessage([
+                'chat_id' => $this->chatID, 
+                'text' => "Товаров не найдено",
+                "parse_mode" => "html"
+              ]); 
+        } 
+        else
+        {
+            foreach($getTopTenToday as $productInfo)
+            {
+                $ProductPreview = new ProductPreview();
+                $ProductPreview->infoProduct($productInfo->product_id);
+
+                $textMessage = "<b>".$productInfo['name']."</b>\n\n";
+                $textMessage .= "➕ Модель: <b>".$productInfo['model']."</b>\n";
+                $textMessage .= "➕ Контейнер: <b>".$productInfo['mpn']."</b>\n";
+                $textMessage .= "➕ Заказов: <b>".$productInfo['sales']."</b>\n";
+
+                $response = $telegram->sendPhoto([
+                    'chat_id' => 'CHAT_ID', 
+                    'photo' => $productInfo['image'],
+                    'reply_markup' => $ProductPreview->get(),
+                    'caption' => $textMessage
+                ]);
+            }
+        }
+    }
+    public function weekTopTen() 
+    {
+        $Stykovka = new Stykovka($_GET['bot'], $this->chatID);
+        $getTopTenToday = $Stykovka->getTopTenProducts("week");
+        if(count($getTopTenToday) == 0) 
+        {
+            $response = $this->client->sendMessage([
+                'chat_id' => $this->chatID, 
+                'text' => "Товаров не найдено",
+                "parse_mode" => "html"
+              ]); 
+        } 
+        else
+        {
+            foreach($getTopTenToday as $productInfo)
+            {
+                $ProductPreview = new ProductPreview();
+                $ProductPreview->infoProduct($productInfo->product_id);
+
+                $textMessage = "<b>".$productInfo['name']."</b>\n\n";
+                $textMessage .= "➕ Модель: <b>".$productInfo['model']."</b>\n";
+                $textMessage .= "➕ Контейнер: <b>".$productInfo['mpn']."</b>\n";
+                $textMessage .= "➕ Заказов: <b>".$productInfo['sales']."</b>\n";
+
+                $response = $telegram->sendPhoto([
+                    'chat_id' => 'CHAT_ID', 
+                    'photo' => $productInfo['image'],
+                    'reply_markup' => $ProductPreview->get(),
+                    'caption' => $textMessage
+                ]);
+            }
+        }
+    }
 
 
 

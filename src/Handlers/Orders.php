@@ -57,6 +57,14 @@ class Orders extends Handlers
 
     public function statsFromOrders()
     {
+        $Stykovka = new Stykovka($_GET['bot'], $this->chatID);
+        $ordersInfo = $Stykovka->getOrdersInfo();
+
+        $response = $this->client->sendMessage([
+            'chat_id' => $this->chatID, 
+            'text' => $ordersInfo->data,
+            "parse_mode" => "html"
+          ]);
 
     }
 }

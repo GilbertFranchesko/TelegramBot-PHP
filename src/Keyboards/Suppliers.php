@@ -58,5 +58,4 @@ class Suppliers
         return $replyMarkup;        
     }
 
-    }
 }
