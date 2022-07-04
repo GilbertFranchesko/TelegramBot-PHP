@@ -11,7 +11,8 @@ class Suppliers extends Handlers
 {
 
     public $dynamicHandlers = array(
-        "Конт" => "getSupplierInfo"
+        "Конт" => "getSupplierInfo",
+        "msg" => "sendMessageAllSuppliers"
     ); 
 
     public function handle()
@@ -48,5 +49,24 @@ class Suppliers extends Handlers
             'text' => $supplierInfo->data,
             'parse_mode' => 'HTML'
           ]);
+    }
+
+    public function sendMessageAllSuppliers($dynamic)
+    {
+        $Stykovka = new Stykovka($_GET['bot'], $this->chatID);
+        $suppliersChatID = $Stykovka->getAllSuppliersChat();
+
+        foreach($suppliersChatID->data as $chatID)
+        {
+            $message = $dynamic[0];
+            $response = $this->client->sendMessage([
+            'chat_id' => $chatID->chat_id,     
+            'text' => $message,
+            'parse_mode' => 'HTML'
+          ]);
+        }
+
+
+        
     }
 }

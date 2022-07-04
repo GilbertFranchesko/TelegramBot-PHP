@@ -154,6 +154,16 @@ class Stykovka
         return $generateURL;
     }
 
+    public function getAllSuppliersChat()
+    {
+        $response = $this->CustomRequest("GET", $this->URL."/index.php?route=rest/tg_bot_api/getAllSuppliersChat", array(), $this->apiKey);
+
+        // var_dump($response);
+        return $response;
+    }
+
+
+
     private function CustomRequest($type, $url, $body, $token)
     {
         $curl = curl_init();
