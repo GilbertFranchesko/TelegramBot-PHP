@@ -17,6 +17,8 @@ class Orders extends Handlers
 
     public function handle()
     {
+        if(!$this->permission([Stykovka::TYPE_ADMIN, Stykovka::TYPE_SUPPLIER])) return;
+
         $OrdersKeyboardInit = new OrdersKeyboard($this->client, $this->chatID);
 
         $response = $this->client->sendMessage([
@@ -28,6 +30,8 @@ class Orders extends Handlers
 
     public function package()
     {
+        if(!$this->permission([Stykovka::TYPE_ADMIN, Stykovka::TYPE_SUPPLIER])) return;
+
         $Stykovka = new Stykovka($_GET['bot'], $this->chatID);
         $suppliersPackage = $Stykovka->getSuppliersPackage();
 
@@ -57,6 +61,8 @@ class Orders extends Handlers
 
     public function statsFromOrders()
     {
+        if(!$this->permission([Stykovka::TYPE_ADMIN, Stykovka::TYPE_SUPPLIER])) return;
+
         $Stykovka = new Stykovka($_GET['bot'], $this->chatID);
         $ordersInfo = $Stykovka->getOrdersInfo();
 

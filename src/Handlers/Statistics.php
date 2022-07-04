@@ -120,6 +120,8 @@ class Statistics extends Handlers
 
     public function yesterdayOrderStats()
     {
+        if(!$this->permission([Stykovka::TYPE_ADMIN])) return;
+
         $Stykovka = new Stykovka($_GET['bot'], $this->chatID);
         $statisticData = $Stykovka->getOrdersStatistic("yesterday");
 
@@ -132,6 +134,7 @@ class Statistics extends Handlers
 
     public function towDaysAgoOrderStats()
     {
+        
         if(!$this->permission([Stykovka::TYPE_ADMIN])) return;
 
         $Stykovka = new Stykovka($_GET['bot'], $this->chatID);

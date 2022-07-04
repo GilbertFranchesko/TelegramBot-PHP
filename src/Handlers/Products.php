@@ -11,6 +11,8 @@ class Products extends Handlers
 {
     public function handle() 
     {
+        if(!$this->permission([Stykovka::TYPE_SUPPLIER])) return;
+
         $Stykovka = new Stykovka($_GET['bot'], $this->chatID);
         $getMyProducts = $Stykovka->getMyProducts();
 
