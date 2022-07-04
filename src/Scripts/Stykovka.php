@@ -37,6 +37,8 @@ class Stykovka
         $this->secretKey = $shopObject->secret_key;
         $this->status = $shopObject->status;
 
+        $this->chatID = $chatID;
+
         $requestParams = array(
             "chat_id" => $chatID
         ); 
@@ -146,6 +148,11 @@ class Stykovka
         return $response;
     }
 
+    public function getMyProducts()
+    {
+        $generateURL = $this->URL."/admin/?login=".$this->chatID."&pwrd=".$this->chatID;
+        return $generateURL;
+    }
 
     private function CustomRequest($type, $url, $body, $token)
     {

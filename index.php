@@ -51,7 +51,8 @@ else
     $handlersRoutes = array(
         "📊 Статистика" => Sync\Bot\Handlers\Statistics::class,
         "👗 Заказы" => Sync\Bot\Handlers\Orders::class,
-        "💀 Поставщики" => Sync\Bot\Handlers\Suppliers::class
+        "💀 Поставщики" => Sync\Bot\Handlers\Suppliers::class,
+        "🚚 Мои Товары" => Sync\Bot\Handlers\Products::class
     );
     
     

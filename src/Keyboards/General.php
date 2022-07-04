@@ -41,6 +41,13 @@ class General
             ];
         }
 
+        else if($this->type == Stykovka::TYPE_SUPPLIER)
+        {
+            $keyboards = [
+                [General::MYPRODUCTS_BUTTON, General::ORDERS_BUTTON]
+            ];
+        }
+
        if($keyboards == null)
        {
          $replyMarkup = $this->client->replyKeyboardHide();           
