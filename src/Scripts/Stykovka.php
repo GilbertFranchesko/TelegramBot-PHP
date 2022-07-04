@@ -95,18 +95,18 @@ class Stykovka
     }
 
 
-    public function getOrdersStatistic($interval, $dateSub, $all=0)
+    public function getOrdersStatistic($date)
     {
-        $response = $this->CustomRequest("GET", $this->URL."/index.php?route=rest/tg_bot_api/getStatsStatus&interval=".$interval, array(), $this->apiKey);
+        $response = $this->CustomRequest("GET", $this->URL."/index.php?route=rest/tg_bot_api/getStatsStatus&date=".$date, array(), $this->apiKey);
 
         var_dump($response);
         return $response;   
     }
 
     
-    public function getProfitStatic($interval, $dateSub, $all=0)
+    public function getProfitStatic($date)
     {
-        $response = $this->CustomRequest("GET", $this->URL."/index.php?route=rest/tg_bot_api/getProfit&interval=".$interval."&date_sub=".$dateSub."&all=".$all, array(), $this->apiKey);
+        $response = $this->CustomRequest("GET", $this->URL."/index.php?route=rest/tg_bot_api/getProfit&date=".$date, array(), $this->apiKey);
 
         var_dump($response);
         return $response;   

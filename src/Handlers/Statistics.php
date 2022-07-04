@@ -106,8 +106,10 @@ class Statistics extends Handlers
 
     public function todayOrderStats()
     {
+        if(!$this->permission([Stykovka::TYPE_ADMIN])) return;
+
         $Stykovka = new Stykovka($_GET['bot'], $this->chatID);
-        $statisticData = $Stykovka->getOrdersStatistic(0,0);
+        $statisticData = $Stykovka->getOrdersStatistic("today");
 
         $response = $this->client->sendMessage([
             'chat_id' => $this->chatID, 
@@ -119,7 +121,7 @@ class Statistics extends Handlers
     public function yesterdayOrderStats()
     {
         $Stykovka = new Stykovka($_GET['bot'], $this->chatID);
-        $statisticData = $Stykovka->getOrdersStatistic(1, 0);
+        $statisticData = $Stykovka->getOrdersStatistic("yesterday");
 
         $response = $this->client->sendMessage([
             'chat_id' => $this->chatID, 
@@ -130,8 +132,10 @@ class Statistics extends Handlers
 
     public function towDaysAgoOrderStats()
     {
+        if(!$this->permission([Stykovka::TYPE_ADMIN])) return;
+
         $Stykovka = new Stykovka($_GET['bot'], $this->chatID);
-        $statisticData = $Stykovka->getOrdersStatistic(2, 0);
+        $statisticData = $Stykovka->getOrdersStatistic("two_day");
 
         $response = $this->client->sendMessage([
             'chat_id' => $this->chatID, 
@@ -142,8 +146,10 @@ class Statistics extends Handlers
 
     public function weekOrderStats()
     {
+        if(!$this->permission([Stykovka::TYPE_ADMIN])) return;
+
         $Stykovka = new Stykovka($_GET['bot'], $this->chatID);
-        $statisticData = $Stykovka->getOrdersStatistic(7, 1, 0);
+        $statisticData = $Stykovka->getOrdersStatistic("week");
 
         $response = $this->client->sendMessage([
             'chat_id' => $this->chatID, 
@@ -154,8 +160,10 @@ class Statistics extends Handlers
 
     public function monthAgoOrderStats()
     {
+        if(!$this->permission([Stykovka::TYPE_ADMIN])) return;
+
         $Stykovka = new Stykovka($_GET['bot'], $this->chatID);
-        $statisticData = $Stykovka->getOrdersStatistic(30, 1);
+        $statisticData = $Stykovka->getOrdersStatistic("month");
 
         $response = $this->client->sendMessage([
             'chat_id' => $this->chatID, 
@@ -166,8 +174,10 @@ class Statistics extends Handlers
 
     public function allOrderStats()
     {
+        if(!$this->permission([Stykovka::TYPE_ADMIN])) return;
+
         $Stykovka = new Stykovka($_GET['bot'], $this->chatID);
-        $statisticData = $Stykovka->getOrdersStatistic(0,0,1);
+        $statisticData = $Stykovka->getOrdersStatistic("all");
 
         $response = $this->client->sendMessage([
             'chat_id' => $this->chatID, 
@@ -182,8 +192,10 @@ class Statistics extends Handlers
 
     public function todayProfitStats()
     {
+        if(!$this->permission([Stykovka::TYPE_ADMIN])) return;
+
         $Stykovka = new Stykovka($_GET['bot'], $this->chatID);
-        $statisticData = $Stykovka->getProfitStatic(0,0,0);
+        $statisticData = $Stykovka->getProfitStatic("today");
 
         $response = $this->client->sendMessage([
             'chat_id' => $this->chatID, 
@@ -193,8 +205,10 @@ class Statistics extends Handlers
     }
     public function yesterdayProfitStats() 
     {
+        if(!$this->permission([Stykovka::TYPE_ADMIN])) return;
+
         $Stykovka = new Stykovka($_GET['bot'], $this->chatID);
-        $statisticData = $Stykovka->getProfitStatic(1,0,0);
+        $statisticData = $Stykovka->getProfitStatic("yesterday");
 
         $response = $this->client->sendMessage([
             'chat_id' => $this->chatID, 
@@ -202,9 +216,12 @@ class Statistics extends Handlers
             "parse_mode" => "html"
           ]); 
     }
-    public function weekProfitStats() {
+    public function weekProfitStats() 
+    {
+        if(!$this->permission([Stykovka::TYPE_ADMIN])) return;
+
         $Stykovka = new Stykovka($_GET['bot'], $this->chatID);
-        $statisticData = $Stykovka->getProfitStatic(7,1,0);
+        $statisticData = $Stykovka->getProfitStatic("week");
 
         $response = $this->client->sendMessage([
             'chat_id' => $this->chatID, 
@@ -212,9 +229,12 @@ class Statistics extends Handlers
             "parse_mode" => "html"
           ]); 
     }
-    public function monthAgoProfitStats() {
+    public function monthAgoProfitStats() 
+    {
+        if(!$this->permission([Stykovka::TYPE_ADMIN])) return;
+
         $Stykovka = new Stykovka($_GET['bot'], $this->chatID);
-        $statisticData = $Stykovka->getProfitStatic(0,0,1);
+        $statisticData = $Stykovka->getProfitStatic("last_month");
 
         $response = $this->client->sendMessage([
             'chat_id' => $this->chatID, 
@@ -230,6 +250,8 @@ class Statistics extends Handlers
 
     public function todayTopTen() 
     {
+        if(!$this->permission([Stykovka::TYPE_ADMIN])) return;
+
         $Stykovka = new Stykovka($_GET['bot'], $this->chatID);
         $getTopTenToday = $Stykovka->getTopTenProducts("today");
         if(count($getTopTenToday) == 0) 
@@ -263,6 +285,8 @@ class Statistics extends Handlers
     }
     public function yesterdayTopTen() 
     {
+        if(!$this->permission([Stykovka::TYPE_ADMIN])) return;
+
         $Stykovka = new Stykovka($_GET['bot'], $this->chatID);
         $getTopTenToday = $Stykovka->getTopTenProducts("yesterday");
         if(count($getTopTenToday) == 0) 
@@ -298,6 +322,8 @@ class Statistics extends Handlers
     
     public function threeDaysTopTen() 
     {
+        if(!$this->permission([Stykovka::TYPE_ADMIN])) return;
+
         $Stykovka = new Stykovka($_GET['bot'], $this->chatID);
         $getTopTenToday = $Stykovka->getTopTenProducts("three_day");
         if(count($getTopTenToday) == 0) 
@@ -331,6 +357,8 @@ class Statistics extends Handlers
     }
     public function fiveDaysTopTen() 
     {
+        if(!$this->permission([Stykovka::TYPE_ADMIN])) return;
+
         $Stykovka = new Stykovka($_GET['bot'], $this->chatID);
         $getTopTenToday = $Stykovka->getTopTenProducts("five_day");
         if(count($getTopTenToday) == 0) 
@@ -364,6 +392,8 @@ class Statistics extends Handlers
     }
     public function weekTopTen() 
     {
+        if(!$this->permission([Stykovka::TYPE_ADMIN])) return;
+
         $Stykovka = new Stykovka($_GET['bot'], $this->chatID);
         $getTopTenToday = $Stykovka->getTopTenProducts("week");
         if(count($getTopTenToday) == 0) 
